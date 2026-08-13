@@ -14,12 +14,10 @@ public class CreateActivity
 
     public class Handler(AppDbContext context): IRequestHandler<Command, string>
     {
-        private readonly AppDbContext _context = context;
-
         public async Task<string> Handle(Command request, CancellationToken cancellationToken)
         {
-            _context.Activities.Add(request.Activity);
-            await _context.SaveChangesAsync(cancellationToken);
+            context.Activities.Add(request.Activity);
+            await context.SaveChangesAsync(cancellationToken);
 
             return request.Activity.Id;
         }

@@ -12,12 +12,9 @@ public class GetActivityList
 
     public class Handler(AppDbContext context): IRequestHandler<Query, List<Activity>>
     {
-        private readonly AppDbContext _context = context;
-
-
         public async Task<List<Activity>> Handle(Query request, CancellationToken cancellationToken)
         {
-            return await _context.Activities.ToListAsync(cancellationToken);
+            return await context.Activities.ToListAsync(cancellationToken);
         }
     }
 }

@@ -16,6 +16,7 @@ namespace API.Controllers
         // <summary>
         // Gets the IMediator instance from the request services (program.cs).   
         // </summary>
+        // <exception cref="InvalidOperationException">Thrown when the IMediator service is not registered.</exception> 
         protected IMediator Mediator => _mediator ??= HttpContext.RequestServices.GetService<IMediator>() 
         ?? throw new InvalidOperationException("IMediator service is not registered.");
 
